@@ -2,7 +2,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000",
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    (import.meta.env.DEV ? "http://localhost:5000" : ""),
   headers: {
     "Content-Type": "application/json",
   },
@@ -25,11 +27,10 @@ API.interceptors.request.use(
       url.includes("/api/staff/delete/") ||
       url.includes("/api/appointments/update-status/") ||
       url.includes("/api/services/update/") ||
-url.includes("/api/services/delete/") ||
-url.includes("/api/reviews/all") ||
-url.includes("/api/reviews/delete/") ||
+      url.includes("/api/services/delete/") ||
+      url.includes("/api/reviews/all") ||
+      url.includes("/api/reviews/delete/") ||
       (url === "/api/appointments/" && method === "get");
-      
 
     const token = localStorage.getItem(
       isAdminRequest ? "adminToken" : "customerToken"
