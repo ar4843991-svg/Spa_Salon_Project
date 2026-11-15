@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/admin/register
+Content-Type: application/json
+
+{
+  "name": "Salon Admin",
+  "email": "admin@veloura.com",
+  "password": "VelouraAdmin123"
+}

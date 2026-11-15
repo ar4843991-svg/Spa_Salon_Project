@@ -1,0 +1,209 @@
+POST http://localhost:5000/api/customers/register
+Content-Type: application/json
+
+{
+  "name": "Test Customer",
+  "email": "test3@example.com",
+  "password": "SalonTest123!"
+}
+
+### Customer Login
+POST http://localhost:5000/api/customers/login
+Content-Type: application/json
+
+{
+  "email": "test3@example.com",
+  "password": "SalonTest123!"
+}
+
+
+### Add New Service
+POST http://localhost:5000/api/services/add
+Content-Type: application/json
+
+{
+  "name": "Haircut",
+  "description": "Professional hair cutting service",
+  "price": 1500,
+  "duration": 45
+}
+
+
+### Get All Services
+GET http://localhost:5000/api/services
+
+### Add Test Staff
+POST http://localhost:5000/api/staff/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0ODQxNiwiZXhwIjoxNzk0NzM0ODE2fQ.j_jloHcdc3Zc4rnEOY1TNGUFUc8d6ze0KsehM6Rbdhw
+
+{
+  "name": "Test Staff",
+  "email": "teststaff@example.com",
+  "phone": "03001234568",
+  "speciality": "Makeup Artist"
+}
+
+### Get All Staff
+GET http://localhost:5000/api/staff
+
+
+### Book Appointment
+POST http://localhost:5000/api/appointments/book
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwNDhkNGQyN2VlODY1YzE2ZjBjZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc5NDY0NDA5MCwiZXhwIjoxNzk0NzMwNDkwfQ.XySHhXcl7EPww8Q108sOYnY5eyaMC0KeNr5ygmpVDZY
+
+{
+  "service": "6af80625572b2d723cc5610a",
+  "staff": "6af80754179153ccdf776ece",
+  "date": "2026-11-20",
+  "time": "10:00 AM"
+}
+
+
+### Get All Appointments
+GET http://localhost:5000/api/appointments
+
+
+### Update Appointment Status
+PUT http://localhost:5000/api/appointments/update-status/6af808439e4761b7c515d2fa
+Content-Type: application/json
+
+{
+  "status": "Confirmed"
+}
+
+
+### Verify Updated Appointment
+GET http://localhost:5000/api/appointments
+
+
+### Get Customer Bookings
+GET http://localhost:5000/api/appointments/customer/6af8048d4d27ee865c16f0ce
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwNDhkNGQyN2VlODY1YzE2ZjBjZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc5NDY0NTYxMywiZXhwIjoxNzk0NzMyMDEzfQ.xLz9Y4LJUm6SAiUtchZgks3rzBb_1AbVxPciYFBRczg
+
+
+
+
+### Cancel Appointment
+PUT http://localhost:5000/api/appointments/cancel/6af819b17de5b8756960eeb7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwNDhkNGQyN2VlODY1YzE2ZjBjZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc5NDY0NTYxMywiZXhwIjoxNzk0NzMyMDEzfQ.xLz9Y4LJUm6SAiUtchZgks3rzBb_1AbVxPciYFBRczg
+
+### Mark Appointment Completed
+PUT http://localhost:5000/api/appointments/update-status/6af81a597de5b8756960eeb8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0NTg0MywiZXhwIjoxNzk0NzMyMjQzfQ.xXZXVebaPTPMvzx8o38zHvuas5uUND9tQ1ULxrRdIUo
+
+{
+  "status": "Confirmed"
+}
+
+### Add Customer Review
+POST http://localhost:5000/api/reviews/add
+Content-Type: application/json
+
+{
+  "customer": "6af8048d4d27ee865c16f0ce",
+  "appointment": "6af808439e4761b7c515d2fa",
+  "rating": 5,
+  "comment": "Excellent service and friendly staff!"
+}
+
+### Get All Reviews
+GET http://localhost:5000/api/reviews
+
+### Admin Registration
+POST http://localhost:5000/api/admin/register
+Content-Type: application/json
+
+{
+  "name": "Salon Admin",
+  "email": "admin@spasalon.com",
+  "password": "AdminTest123!"
+}
+
+### Admin Login
+POST http://localhost:5000/api/admin/login
+Content-Type: application/json
+
+{
+  "email": "admin@spasalon.com",
+  "password": "AdminTest123!"
+}
+
+
+### Protected Admin Dashboard
+GET http://localhost:5000/api/admin/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0MjU1MSwiZXhwIjoxNzk0NzI4OTUxfQ.S1sBotl5aRuWpcCIHe1_NYLIHoNWNOxalEMjGK-Y4AY
+
+###  staaf avalibilt 
+PUT http://localhost:5000/api/staff/availability/6af80754179153ccdf776ece
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0Nzc0NCwiZXhwIjoxNzk0NzM0MTQ0fQ.08eUXxvwf4WfLwBy9dYHxCXB7GTO6fqJTLm8Mzkt4dI
+
+{
+  "isAvailable": true
+}
+
+
+
+### Update Staff
+PUT http://localhost:5000/api/staff/update/6af80754179153ccdf776ece
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0ODQxNiwiZXhwIjoxNzk0NzM0ODE2fQ.j_jloHcdc3Zc4rnEOY1TNGUFUc8d6ze0KsehM6Rbdhw
+
+{
+  "name": "Ali Ahmed",
+  "email": "ali@example.com",
+  "phone": "03001234567",
+  "speciality": "Hair Stylist"
+}
+
+
+### Delete Staff
+DELETE http://localhost:5000/api/staff/delete/6af82aae7700f7e0f108a1fb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0ODQxNiwiZXhwIjoxNzk0NzM0ODE2fQ.j_jloHcdc3Zc4rnEOY1TNGUFUc8d6ze0KsehM6Rbdhw
+
+
+### Get All Customers
+GET http://localhost:5000/api/customers/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0ODQxNiwiZXhwIjoxNzk0NzM0ODE2fQ.j_jloHcdc3Zc4rnEOY1TNGUFUc8d6ze0KsehM6Rbdhw
+
+
+
+### Update Customer
+PUT http://localhost:5000/api/customers/update/6af8048d4d27ee865c16f0ce
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0OTMwMywiZXhwIjoxNzk0NzM1NzAzfQ.6D6b5NKeDf9Uz2vpKUsPV9P_CNhpeJbBnNLx35mAj5w
+
+{
+  "name": "Updated Customer",
+  "email": "updatedcustomer@example.com"
+}
+
+
+### Register Test Customer
+POST http://localhost:5000/api/customers/register
+Content-Type: application/json
+
+{
+  "name": "Test Customer",
+  "email": "testcustomer@example.com",
+  "password": "TestCustomer123"
+}
+
+
+### Delete Test Customer
+DELETE http://localhost:5000/api/customers/delete/6af82d4ebcf39924ff8aee9a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0OTMwMywiZXhwIjoxNzk0NzM1NzAzfQ.6D6b5NKeDf9Uz2vpKUsPV9P_CNhpeJbBnNLx35mAj5w
+
+
+
+### Get All Reviews
+GET http://localhost:5000/api/reviews/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0OTMwMywiZXhwIjoxNzk0NzM1NzAzfQ.6D6b5NKeDf9Uz2vpKUsPV9P_CNhpeJbBnNLx35mAj5w
+
+
+### Delete Review
+DELETE http://localhost:5000/api/reviews/delete/6af80a6afc8f79028b7d4cca
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZjgwYjgxOGU4ODI3MjJkNzUwZjAxMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDY0OTMwMywiZXhwIjoxNzk0NzM1NzAzfQ.6D6b5NKeDf9Uz2vpKUsPV9P_CNhpeJbBnNLx35mAj5w
